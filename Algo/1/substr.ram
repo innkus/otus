@@ -1,0 +1,31 @@
+<input>  30 8
+
+; r1 = делимое  
+; r2 = делитель 
+; r3 = частное  
+
+read 1
+read 2
+load =0
+store 3
+
+next:
+load 2
+sub 1
+jgtz stop
+
+load 3
+add =1
+store 3
+
+load 1
+sub 2
+store 1
+
+load =0
+jz next
+
+stop:
+write 3
+write 1
+halt

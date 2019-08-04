@@ -1,0 +1,153 @@
+<input> 12 -10 20 1 3 8 5 11 3 -100 25 4 8
+read 0
+  ; проверка на 0 элементов	 
+jz stop
+
+store 1  ; в r1 - количество элементов N
+; в r2 номер €чейки начала массива чисел, храним элементы, начина€ с r20
+load =20
+store 2
+
+; начинаем считывать массив (хот€ бы один элемент есть)
+load 1
+next_read:
+    ; считываем в массив	
+  read *2
+    ; в r3 счетчик элементов массива
+    ; уменьшаем счетчик элементов
+  sub =1
+  store 3  
+    ; увеличива€ позцию дл€ заполнени€ массива
+  load 2
+  add =1
+  store 2
+    ; проверить не пора ли заканчивать цикл
+  load 3	
+jgtz next_read 
+
+
+; закручиваем внешний цикл
+    ; r6 = N; переменна€ дл€ останова внешнего цикла (да, наверное, не очень оптимально)
+load 1
+store 6
+    ; r5 = 0; переменна€ внешнего цикла дл€ старта внутреннего цикла
+load =0
+store 5
+
+    ; do {
+loop:
+
+    ; r8 = N - r5 - 1; 
+  load 1
+  sub =1
+  sub 5
+  store 8
+
+    ; r7 = r5 + 1;
+  load 5
+  add =1
+  store 7
+
+sort:
+    ; if (r8 == 0) goto next;
+  load 8
+  jz next
+
+    ; in[r7] в r17
+  load =20
+  add 7
+  store 17  ; in[r7]
+  load *17
+  store 17
+
+    ; in[r5] в r15
+  load =20
+  add 5
+  store 15  ; in[r5]
+  load *15
+  store 15
+    
+    ; сравниваем элементы
+    ; r0 = in[r7];
+  load 17
+    ; r0 = r0 - in[r5];
+  sub 15
+    ; if (r0 > 0) goto end_if;
+  jgtz end_if
+
+    ; if (r0 == 0)  goto end_if;
+  jz end_if
+
+    ; мен€ем местами элементы
+    ; r3 = in[r5];
+  load 15;
+  store 3;
+
+    ; in[r5] = in[r7];
+  load 17;
+  store 15;
+
+    ; in[r7] = r3;
+  load 3;
+  store 17;
+
+  load =20
+  add 7
+  store 18  ; in[r7]
+  load 17
+  store *18
+
+  load =20
+  add 5
+  store 16  ; in[r7]
+  load 15
+  store *16
+
+
+
+end_if:
+    ; r8--;
+  load 8
+  sub =1
+  store 8
+
+    ; ++r7;
+  load 7
+  add =1
+  store 7
+
+    ; goto sort;
+  load =0
+  jz sort  
+
+next:
+
+    ; r5++;
+  load 5
+  add =1
+  store 5
+
+    ; r6--;
+  load 6
+  sub =1
+  store 6
+
+    ; } while (r6 > 0);
+jgtz loop
+
+; печатаем массив начина€ с 20 €чейки, в r1 количество элементов
+load =20
+store 2
+load 1
+print_next:
+  write *2
+  sub =1
+  store 3
+  load 2
+  add =1
+  store 2
+  load 3
+jgtz print_next
+
+stop:
+halt
