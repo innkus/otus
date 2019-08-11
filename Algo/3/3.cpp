@@ -1,20 +1,20 @@
-// 3.cpp : This file contains the 'main' function. Program execution begins and ends there.
+п»ї// 3.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include "pch.h"
 #include <iostream>
 
-// тест НОД
+// С‚РµСЃС‚ РќРћР”
 void test_nod();
-// тест возведения в степень
+// С‚РµСЃС‚ РІРѕР·РІРµРґРµРЅРёСЏ РІ СЃС‚РµРїРµРЅСЊ
 void test_degree();
-// тест подсчет простых чисел
+// С‚РµСЃС‚ РїРѕРґСЃС‡РµС‚ РїСЂРѕСЃС‚С‹С… С‡РёСЃРµР»
 void test_prime();
-// тест поиска чисел Фибоначчи 
+// С‚РµСЃС‚ РїРѕРёСЃРєР° С‡РёСЃРµР» Р¤РёР±РѕРЅР°С‡С‡Рё 
 void test_fibonacci();
-// тестирование матриц
+// С‚РµСЃС‚РёСЂРѕРІР°РЅРёРµ РјР°С‚СЂРёС†
 void test_matrix();
-// битовый массив
+// Р±РёС‚РѕРІС‹Р№ РјР°СЃСЃРёРІ
 void test_array_bitset();
 
 int main()

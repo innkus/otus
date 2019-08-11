@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 #include "pch.h"
 #include "iarray.h"
@@ -58,11 +58,11 @@ public:
 
     T deletedItem = get(index);
 
-    // сдвигаем хвост на 1 элемент
+    // СЃРґРІРёРіР°РµРј С…РІРѕСЃС‚ РЅР° 1 СЌР»РµРјРµРЅС‚
     memcpy(array + index, array + index + 1, sizeof(T)*(size() - (index + 1)));
     length--;
 
-    //не будем урезать память до кратного seed - сэкономим на выделении
+    //РЅРµ Р±СѓРґРµРј СѓСЂРµР·Р°С‚СЊ РїР°РјСЏС‚СЊ РґРѕ РєСЂР°С‚РЅРѕРіРѕ seed - СЃСЌРєРѕРЅРѕРјРёРј РЅР° РІС‹РґРµР»РµРЅРёРё
 
     return deletedItem;
   }

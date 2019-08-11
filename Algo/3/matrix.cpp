@@ -1,7 +1,7 @@
-#include "pch.h"
+п»ї#include "pch.h"
 #include "matrix.h"
 
-// тестирование матриц
+// С‚РµСЃС‚РёСЂРѕРІР°РЅРёРµ РјР°С‚СЂРёС†
 void test_matrix() {
   {
     matrix m(2);

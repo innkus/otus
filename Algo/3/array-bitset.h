@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 #include "pch.h"
 #include "iarray.h"
@@ -57,9 +57,9 @@ public:
 
   virtual T get(int index) const override {
     if (index < count_bit) {
-      // номер элемента массива
+      // РЅРѕРјРµСЂ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР°
       int num = index / 32;
-      // позиция в элементе
+      // РїРѕР·РёС†РёСЏ РІ СЌР»РµРјРµРЅС‚Рµ
       int pos = index % 32;
       uint32_t x = array[num] >> pos;
       return T(x & 1);
@@ -70,9 +70,9 @@ public:
   virtual void set(T item, int index) override {
     if (index >= count_bit)
       return;
-    // номер элемента массива
+    // РЅРѕРјРµСЂ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР°
     int num = index / 32;
-    // позиция в элементе
+    // РїРѕР·РёС†РёСЏ РІ СЌР»РµРјРµРЅС‚Рµ
     int pos = index % 32;
     uint32_t x = 1 << pos;
     if (item) {

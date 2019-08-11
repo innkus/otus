@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 #include <iostream>
 #include <string.h>
@@ -19,7 +19,7 @@ struct IArray {
   virtual void print() = 0;
   virtual const char* name() const = 0;
 
-  /// тестирование вставка в начало
+  /// С‚РµСЃС‚РёСЂРѕРІР°РЅРёРµ РІСЃС‚Р°РІРєР° РІ РЅР°С‡Р°Р»Рѕ
   /// @param count 
   int64_t testAdd(int64_t count) {
 
@@ -53,7 +53,7 @@ struct IBitArray {
   virtual void print() = 0;
   virtual const char* name() const = 0;
 
-  /// тестирование вставка в начало
+  /// С‚РµСЃС‚РёСЂРѕРІР°РЅРёРµ РІСЃС‚Р°РІРєР° РІ РЅР°С‡Р°Р»Рѕ
   /// @param count 
   int64_t testAdd(int64_t count) {
 

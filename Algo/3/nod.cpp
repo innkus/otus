@@ -1,7 +1,7 @@
-#include "pch.h"
+п»ї#include "pch.h"
 #include <iostream>
 
-// НОД через деление
+// РќРћР” С‡РµСЂРµР· РґРµР»РµРЅРёРµ
 int nod_devide(unsigned x, unsigned y) {
   while ((x != 0) && (y != 0)) {
     if (x > y)
@@ -12,7 +12,7 @@ int nod_devide(unsigned x, unsigned y) {
   return x + y;
 }
 
-// НОД через вычитание
+// РќРћР” С‡РµСЂРµР· РІС‹С‡РёС‚Р°РЅРёРµ
 int nod_substruct(unsigned x, unsigned y) {
   while (x != y) {
     if (x > y)
@@ -24,7 +24,7 @@ int nod_substruct(unsigned x, unsigned y) {
   return x;
 }
 
-// тест
+// С‚РµСЃС‚
 void test_nod() {
   struct temp {
     int x, y, nod;

@@ -1,10 +1,10 @@
-#pragma once
+п»ї#pragma once
 
 #include "math.h"
 #include "array-dyna.h"
 
-// да, реализация квадртаной матрицы - так себе
-// квадратная матрица
+// РґР°, СЂРµР°Р»РёР·Р°С†РёСЏ РєРІР°РґСЂС‚Р°РЅРѕР№ РјР°С‚СЂРёС†С‹ - С‚Р°Рє СЃРµР±Рµ
+// РєРІР°РґСЂР°С‚РЅР°СЏ РјР°С‚СЂРёС†Р°
 template <typename T>
 struct squareMatrix : DynamicArray<T> {
   //
@@ -18,7 +18,7 @@ struct squareMatrix : DynamicArray<T> {
   squareMatrix() : DynamicArray<T>(4), N(0) {
   }
 
-  // формирование диагональной матрица 
+  // С„РѕСЂРјРёСЂРѕРІР°РЅРёРµ РґРёР°РіРѕРЅР°Р»СЊРЅРѕР№ РјР°С‚СЂРёС†Р° 
   squareMatrix & operator=(T diagValue) {
     for (int i = 0; i < N; i++) {
       for (int j = 0; j < N; j++) {
@@ -31,7 +31,7 @@ struct squareMatrix : DynamicArray<T> {
     return *this;
   }
 
-  // оператор умножения
+  // РѕРїРµСЂР°С‚РѕСЂ СѓРјРЅРѕР¶РµРЅРёСЏ
   squareMatrix & operator*(const squareMatrix &m) {
     squareMatrix res(m.N);
     int n = m.N < N ? m.N : N;
@@ -50,7 +50,7 @@ struct squareMatrix : DynamicArray<T> {
     return *this;
   }
 
-  // оператор умножения
+  // РѕРїРµСЂР°С‚РѕСЂ СѓРјРЅРѕР¶РµРЅРёСЏ
   squareMatrix & operator=(const squareMatrix &m) {
     if (this == &m)
       return *this;
@@ -62,7 +62,7 @@ struct squareMatrix : DynamicArray<T> {
     return *this;
   }
 
-  // оператор умножения
+  // РѕРїРµСЂР°С‚РѕСЂ СѓРјРЅРѕР¶РµРЅРёСЏ
   bool operator==(const squareMatrix &m) {
     if (N != m.N)
       return false;
@@ -73,7 +73,7 @@ struct squareMatrix : DynamicArray<T> {
     return true;
   }
 
-  // оператор умножения
+  // РѕРїРµСЂР°С‚РѕСЂ СѓРјРЅРѕР¶РµРЅРёСЏ
   bool operator==(const T &value) {
     for (int i = 0; i < N*N; ++i) {
       if (DynamicArray<T>::get(i) != value)
@@ -82,11 +82,11 @@ struct squareMatrix : DynamicArray<T> {
     return true;
   }
 
-  // получить элемент m[i,j]
+  // РїРѕР»СѓС‡РёС‚СЊ СЌР»РµРјРµРЅС‚ m[i,j]
   T get2(int i, int j) const {
     return DynamicArray<T>::get(i*N + j);
   }
-  // установить элемент m[i,j]
+  // СѓСЃС‚Р°РЅРѕРІРёС‚СЊ СЌР»РµРјРµРЅС‚ m[i,j]
   void set2(T value, int i, int j) {
     return DynamicArray<T>::set(value, i*N + j);
   }
@@ -101,7 +101,7 @@ struct squareMatrix : DynamicArray<T> {
     std::cout << std::endl;
   }
 
-  // размер матрицы
+  // СЂР°Р·РјРµСЂ РјР°С‚СЂРёС†С‹
   int N;
 };
 

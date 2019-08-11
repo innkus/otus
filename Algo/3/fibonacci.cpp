@@ -1,18 +1,18 @@
-#include "pch.h"
+п»ї#include "pch.h"
 #include <iostream>
 #include <chrono>
 #include "array-dyna.h"
 #include "matrix.h"
 
-// Через двоичное разложение показателя степени
+// Р§РµСЂРµР· РґРІРѕРёС‡РЅРѕРµ СЂР°Р·Р»РѕР¶РµРЅРёРµ РїРѕРєР°Р·Р°С‚РµР»СЏ СЃС‚РµРїРµРЅРё
 double degree_2_multy(double x, int n);
-// Через степень двойки с домножением
+// Р§РµСЂРµР· СЃС‚РµРїРµРЅСЊ РґРІРѕР№РєРё СЃ РґРѕРјРЅРѕР¶РµРЅРёРµРј
 matrix degree_2_matrix(matrix x, int n);
-// Cтепень итеративно
+// CС‚РµРїРµРЅСЊ РёС‚РµСЂР°С‚РёРІРЅРѕ
 matrix degree_iter(matrix x, int n);
 
-// Алгоритм поиска чисел Фибоначчи 
-// Через рекурсию
+// РђР»РіРѕСЂРёС‚Рј РїРѕРёСЃРєР° С‡РёСЃРµР» Р¤РёР±РѕРЅР°С‡С‡Рё 
+// Р§РµСЂРµР· СЂРµРєСѓСЂСЃРёСЋ
 int fibonacci_recursive(int N) {
   if (N == 0 || N == 1)
     return N;
@@ -20,7 +20,7 @@ int fibonacci_recursive(int N) {
     return fibonacci_recursive(N - 1) + fibonacci_recursive(N - 2);
 }
 
-// Через итерацию
+// Р§РµСЂРµР· РёС‚РµСЂР°С†РёСЋ
 int fibonacci_iter(int N) {
 
   if (N == 0 || N == 1)
@@ -38,7 +38,7 @@ int fibonacci_iter(int N) {
   return res;
 }
 
-// По формуле золотого сечения
+// РџРѕ С„РѕСЂРјСѓР»Рµ Р·РѕР»РѕС‚РѕРіРѕ СЃРµС‡РµРЅРёСЏ
 // Fn = [g^n/sqrt(5) + 0.5]; g = (1+sqrt(5))/2
 int fibonacci_gold(int N) {
   double root5 = sqrt(5);
@@ -57,7 +57,7 @@ matrix degree_iter2(matrix x, int n) {
   return res;
 }
 
-// Через умножение матриц(по желанию) + 1 балл
+// Р§РµСЂРµР· СѓРјРЅРѕР¶РµРЅРёРµ РјР°С‚СЂРёС†(РїРѕ Р¶РµР»Р°РЅРёСЋ) + 1 Р±Р°Р»Р»
 int fibonacci_matrix(int N) {
   
   matrix matrix_n(2);
@@ -74,7 +74,7 @@ int fibonacci_matrix(int N) {
   return int(matrix_n.get(0));
 }
 
-// тест поиска чисел Фибоначчи 
+// С‚РµСЃС‚ РїРѕРёСЃРєР° С‡РёСЃРµР» Р¤РёР±РѕРЅР°С‡С‡Рё 
 void test_fibonacci() {
   struct temp {
     unsigned x;
