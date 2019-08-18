@@ -55,10 +55,10 @@ public:
 
     T deletedItem = get(index);
 
-    // сдвигаем хвост на 1 элемент
+    // СЃРґРІРёРіР°РµРј С…РІРѕСЃС‚ РЅР° 1 СЌР»РµРјРµРЅС‚
     memcpy(array + index, array + index + 1, sizeof(T)*(size() - (index + 1)));
 
-    // пересоздаем массив
+    // РїРµСЂРµСЃРѕР·РґР°РµРј РјР°СЃСЃРёРІ
     T *newArray = new T[size() - 1];
     memcpy(newArray, array, sizeof(T)*size());
     length--;

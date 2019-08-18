@@ -13,8 +13,8 @@
 //     a b c d e f g h
 // rnbqkbnr / pppppppp / 8 / 8 / 8 / 8 / PPPPPPPP / RNBQKBNR w KQkq - 0 1
 
-/// @param fen FEN-строка
-/// @outfile поток выходного файла
+/// @param fen FEN-СЃС‚СЂРѕРєР°
+/// @outfile РїРѕС‚РѕРє РІС‹С…РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р°
 void task_1743(const const std::string &fen, std::string &outFen) {
 
   std::ostringstream outStream;
@@ -53,7 +53,7 @@ void task_1743(const const std::string &fen, std::string &outFen) {
 }
 
 
-/// @param infile файл со срокой fen
+/// @param infile С„Р°Р№Р» СЃРѕ СЃСЂРѕРєРѕР№ fen
 int task_1743(const std::string &dir) {
 
   std::cout << "1743" << std::endl;
@@ -73,7 +73,7 @@ int task_1743(const std::string &dir) {
     std::string outputFile(file);
     outputFile.append(".out");
 
-    // сконструировать объект класса ifstream для ввода из файла
+    // СЃРєРѕРЅСЃС‚СЂСѓРёСЂРѕРІР°С‚СЊ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° ifstream РґР»СЏ РІРІРѕРґР° РёР· С„Р°Р№Р»Р°
     std::ifstream ioInputFile(inputFile.c_str());
     if (!ioInputFile) {
       return -1;
@@ -92,7 +92,7 @@ int task_1743(const std::string &dir) {
       outputFen += "\n";
     }
 
-    // вызываем функцию
+    // РІС‹Р·С‹РІР°РµРј С„СѓРЅРєС†РёСЋ
     std::string resultFen;
     task_1743(inputFen, resultFen);
 

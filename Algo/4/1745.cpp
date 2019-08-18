@@ -2,7 +2,7 @@
 #include "simpleArray.h"
 #include "game.h"
 
-/// @param infile файл со строкой fen
+/// @param infile С„Р°Р№Р» СЃРѕ СЃС‚СЂРѕРєРѕР№ fen
 int task_1745(const std::string &dir) {
 
   std::cout << "1745" << std::endl;
@@ -23,7 +23,7 @@ int task_1745(const std::string &dir) {
     std::string outputFile(file);
     outputFile.append(".out");
 
-    // сконструировать объект класса ifstream для ввода из файла
+    // СЃРєРѕРЅСЃС‚СЂСѓРёСЂРѕРІР°С‚СЊ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° ifstream РґР»СЏ РІРІРѕРґР° РёР· С„Р°Р№Р»Р°
     std::ifstream ioInputFile(inputFile.c_str());
     if (!ioInputFile) {
       return -1;

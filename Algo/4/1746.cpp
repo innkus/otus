@@ -4,8 +4,8 @@
 
 std::string resultFen;
 
-/// @param fen FEN-строка
-/// @return строка со сменой счетчика и хода
+/// @param fen FEN-СЃС‚СЂРѕРєР°
+/// @return СЃС‚СЂРѕРєР° СЃРѕ СЃРјРµРЅРѕР№ СЃС‡РµС‚С‡РёРєР° Рё С…РѕРґР°
 const char* task_1746(const char *fen) {
   game_s game(fen);
   game.counter();
@@ -14,7 +14,7 @@ const char* task_1746(const char *fen) {
 }
 
 
-/// @param infile файл со строкой fen
+/// @param infile С„Р°Р№Р» СЃРѕ СЃС‚СЂРѕРєРѕР№ fen
 int task_1746(const std::string &dir) {
 
   std::cout << "1746" << std::endl;
@@ -35,7 +35,7 @@ int task_1746(const std::string &dir) {
     std::string outputFile(file);
     outputFile.append(".out");
 
-    // сконструировать объект класса ifstream для ввода из файла
+    // СЃРєРѕРЅСЃС‚СЂСѓРёСЂРѕРІР°С‚СЊ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° ifstream РґР»СЏ РІРІРѕРґР° РёР· С„Р°Р№Р»Р°
     std::ifstream ioInputFile(inputFile.c_str());
     if (!ioInputFile) {
       return -1;
@@ -63,9 +63,9 @@ int task_1746(const std::string &dir) {
 }
 
 
-/// пересчеты в лоб
-/// @param fen FEN-строка
-/// @return строка со сменой счетчика и хода (строку освободить снаружи!)
+/// РїРµСЂРµСЃС‡РµС‚С‹ РІ Р»РѕР±
+/// @param fen FEN-СЃС‚СЂРѕРєР°
+/// @return СЃС‚СЂРѕРєР° СЃРѕ СЃРјРµРЅРѕР№ СЃС‡РµС‚С‡РёРєР° Рё С…РѕРґР° (СЃС‚СЂРѕРєСѓ РѕСЃРІРѕР±РѕРґРёС‚СЊ СЃРЅР°СЂСѓР¶Рё!)
 const char* task_1746_obsolete(const char *fen) {
 
   if (!fen)
@@ -73,7 +73,7 @@ const char* task_1746_obsolete(const char *fen) {
 
   SingleArray<char *> listStr;
 
-  // строим массив подстрок по строке
+  // СЃС‚СЂРѕРёРј РјР°СЃСЃРёРІ РїРѕРґСЃС‚СЂРѕРє РїРѕ СЃС‚СЂРѕРєРµ
   const char *delim = " ";
   int len = strlen(fen) + 1;
   char *fenCpy = new char[len];
@@ -86,43 +86,43 @@ const char* task_1746_obsolete(const char *fen) {
     token = strtok_s(NULL, delim, &next_token);
   }
 
-  // должно быть 6 строк
+  // РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ 6 СЃС‚СЂРѕРє
   if (listStr.size() != 6) {
     delete[]fenCpy;
     return nullptr;
   }
 
-  // берем строку 1 считываем чей ход
+  // Р±РµСЂРµРј СЃС‚СЂРѕРєСѓ 1 СЃС‡РёС‚С‹РІР°РµРј С‡РµР№ С…РѕРґ
   char chSide = listStr.get(1)[0];
 
-  // если надо берем строку 5 и считываем счетчик 
+  // РµСЃР»Рё РЅР°РґРѕ Р±РµСЂРµРј СЃС‚СЂРѕРєСѓ 5 Рё СЃС‡РёС‚С‹РІР°РµРј СЃС‡РµС‚С‡РёРє 
   int counter = std::stoi(listStr.get(5));
   if (chSide == 'b') {
-    // следующий ход - белых
-    // надо увеличить счетчик
+    // СЃР»РµРґСѓСЋС‰РёР№ С…РѕРґ - Р±РµР»С‹С…
+    // РЅР°РґРѕ СѓРІРµР»РёС‡РёС‚СЊ СЃС‡РµС‚С‡РёРє
     counter++;
-    // меняем сторону
+    // РјРµРЅСЏРµРј СЃС‚РѕСЂРѕРЅСѓ
     chSide = 'w';
   }
   else {
-    // меняем сторону
+    // РјРµРЅСЏРµРј СЃС‚РѕСЂРѕРЅСѓ
     chSide = 'b';
   }
   
   char bufCounter[10];
   sprintf_s(bufCounter, sizeof(bufCounter), "%d", counter);
 
-  // формируем новую строку (выделим с запасом, надо бы конечно посчитать, но ладно уж)
+  // С„РѕСЂРјРёСЂСѓРµРј РЅРѕРІСѓСЋ СЃС‚СЂРѕРєСѓ (РІС‹РґРµР»РёРј СЃ Р·Р°РїР°СЃРѕРј, РЅР°РґРѕ Р±С‹ РєРѕРЅРµС‡РЅРѕ РїРѕСЃС‡РёС‚Р°С‚СЊ, РЅРѕ Р»Р°РґРЅРѕ СѓР¶)
   char *pNextFen = new char[2 * len];
 
-  // 0 строка
+  // 0 СЃС‚СЂРѕРєР°
   strcpy_s(pNextFen, strlen(listStr.get(0))+1, listStr.get(0));
   int pos = strlen(pNextFen);
-  // пробел
+  // РїСЂРѕР±РµР»
   pNextFen[pos++] = ' ';
-  // 1 строка
+  // 1 СЃС‚СЂРѕРєР°
   pNextFen[pos++] = chSide;
-  // пробел
+  // РїСЂРѕР±РµР»
   pNextFen[pos++] = ' ';
   // 2-3-4
   for (int i = 2; i <= 4; ++i) {
@@ -130,7 +130,7 @@ const char* task_1746_obsolete(const char *fen) {
     pos += strlen(listStr.get(i));
     pNextFen[pos++] = ' ';
   }
-  // вставляем счетчик
+  // РІСЃС‚Р°РІР»СЏРµРј СЃС‡РµС‚С‡РёРє
   strcpy_s(pNextFen + pos, strlen(bufCounter) + 1, bufCounter);
   delete[]fenCpy;
   return pNextFen;

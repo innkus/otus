@@ -13,8 +13,8 @@ int task_1746(const std::string &dir);
 
 int main(int argc, char *argv[])
 {
-  SetConsoleCP(1251);// установка кодовой страницы win-cp 1251 в поток ввода
-  SetConsoleOutputCP(1251); // установка кодовой страницы win-cp 1251 в поток вывода
+  SetConsoleCP(1251);// СѓСЃС‚Р°РЅРѕРІРєР° РєРѕРґРѕРІРѕР№ СЃС‚СЂР°РЅРёС†С‹ win-cp 1251 РІ РїРѕС‚РѕРє РІРІРѕРґР°
+  SetConsoleOutputCP(1251); // СѓСЃС‚Р°РЅРѕРІРєР° РєРѕРґРѕРІРѕР№ СЃС‚СЂР°РЅРёС†С‹ win-cp 1251 РІ РїРѕС‚РѕРє РІС‹РІРѕРґР°
 
   if (argc > 2) {
     int numTask = std::stoi(argv[1]);
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
       return task_1745(std::string(argv[2]));
 
     case 1746:
-      /// @param infile файл со срокой fen
+      /// @param infile С„Р°Р№Р» СЃРѕ СЃСЂРѕРєРѕР№ fen
       task_1746(std::string(argv[2]));
       break;
 
