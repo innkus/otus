@@ -5,8 +5,6 @@
 /// @param infile файл со строкой fen
 int task_1745(const std::string &dir) {
 
-  std::cout << "1745" << std::endl;
-
   for (int i = 0; i < 10; ++i) {
 
     std::string file(dir);
@@ -38,7 +36,7 @@ int task_1745(const std::string &dir) {
     }
     std::string outputFen;
     getline(ioOutputFile, outputFen, '\n');
-
+    
     std::string resultFen;
     game_s game;
     if (game.load(inputFen.c_str())) {
@@ -53,7 +51,7 @@ int task_1745(const std::string &dir) {
     {
       std::cout << "? " << inputFile << std::endl;
     }
-
+    
   } // end for
 
   return 0;

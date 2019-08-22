@@ -56,8 +56,6 @@ void task_1743(const const std::string &fen, std::string &outFen) {
 /// @param infile файл со срокой fen
 int task_1743(const std::string &dir) {
 
-  std::cout << "1743" << std::endl;
-
   for (int i = 0; i < 10; ++i) {
     std::cout << "----------------------------------------------------------\n";
     std::string file(dir);

@@ -2,7 +2,7 @@
 #include "game.h"
 #include "simpleArray.h"
 
-std::string resultFen;
+extern std::string resultFen;
 
 /// @param fen FEN-строка
 /// @return строка со сменой счетчика и хода
@@ -16,8 +16,6 @@ const char* task_1746(const char *fen) {
 
 /// @param infile файл со строкой fen
 int task_1746(const std::string &dir) {
-
-  std::cout << "1746" << std::endl;
 
   for (int i = 0; i < 5; ++i) {
 

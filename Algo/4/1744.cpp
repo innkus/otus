@@ -6,8 +6,6 @@
 /// @param infile файл со строкой fen
 int task_1744(const std::string &dir) {
 
-  std::cout << "1744" << std::endl;
-
   for (int i = 0; i < 10; ++i) {
 
     std::string file(dir);

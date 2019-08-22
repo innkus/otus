@@ -1,0 +1,422 @@
+File with test description: D:\Projects\otus\Algo\4\test.txt
+-------------------------------------------------------------------
+1743 1743.1.FEN - ASCII
+----------------------------------------------------------
+D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1743.1.FEN - ASCII/test.0.in
+D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1743.1.FEN - ASCII/test.0.out
+rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+Sample: 
+  +-----------------+
+8 | r n b q k b n r |
+7 | p p p p p p p p |
+6 | . . . . . . . . |
+5 | . . . . . . . . |
+4 | . . . . . . . . |
+3 | . . . . . . . . |
+2 | P P P P P P P P |
+1 | R N B Q K B N R |
+  +-----------------+
+    a b c d e f g h  
+
+
+Result: 
+  +-----------------+
+8 | r n b q k b n r |
+7 | p p p p p p p p |
+6 | . . . . . . . . |
+5 | . . . . . . . . |
+4 | . . . . . . . . |
+3 | . . . . . . . . |
+2 | P P P P P P P P |
+1 | R N B Q K B N R |
+  +-----------------+
+    a b c d e f g h  
+
+
++ result==sample
+
+----------------------------------------------------------
+D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1743.1.FEN - ASCII/test.1.in
+D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1743.1.FEN - ASCII/test.1.out
+8/1k6/ppp4p/8/8/8/1K6/QQQQQQQQ w - - 0 50
+Sample: 
+  +-----------------+
+8 | . . . . . . . . |
+7 | . k . . . . . . |
+6 | p p p . . . . p |
+5 | . . . . . . . . |
+4 | . . . . . . . . |
+3 | . . . . . . . . |
+2 | . K . . . . . . |
+1 | Q Q Q Q Q Q Q Q |
+  +-----------------+
+    a b c d e f g h  
+
+
+Result: 
+  +-----------------+
+8 | . . . . . . . . |
+7 | . k . . . . . . |
+6 | p p p . . . . p |
+5 | . . . . . . . . |
+4 | . . . . . . . . |
+3 | . . . . . . . . |
+2 | . K . . . . . . |
+1 | Q Q Q Q Q Q Q Q |
+  +-----------------+
+    a b c d e f g h  
+
+
++ result==sample
+
+----------------------------------------------------------
+D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1743.1.FEN - ASCII/test.2.in
+D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1743.1.FEN - ASCII/test.2.out
+7k/7q/P6r/N6b/B6n/R6p/Q7/K7 w - - 0 50
+Sample: 
+  +-----------------+
+8 | . . . . . . . k |
+7 | . . . . . . . q |
+6 | P . . . . . . r |
+5 | N . . . . . . b |
+4 | B . . . . . . n |
+3 | R . . . . . . p |
+2 | Q . . . . . . . |
+1 | K . . . . . . . |
+  +-----------------+
+    a b c d e f g h  
+
+
+Result: 
+  +-----------------+
+8 | . . . . . . . k |
+7 | . . . . . . . q |
+6 | P . . . . . . r |
+5 | N . . . . . . b |
+4 | B . . . . . . n |
+3 | R . . . . . . p |
+2 | Q . . . . . . . |
+1 | K . . . . . . . |
+  +-----------------+
+    a b c d e f g h  
+
+
++ result==sample
+
+----------------------------------------------------------
+D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1743.1.FEN - ASCII/test.3.in
+D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1743.1.FEN - ASCII/test.3.out
+r1bqkb1r/pppp1ppp/2n2n2/4p3/4P3/2N2N2/PPPP1PPP/R1BQKB1R w - - 0 50
+Sample: 
+  +-----------------+
+8 | r . b q k b . r |
+7 | p p p p . p p p |
+6 | . . n . . n . . |
+5 | . . . . p . . . |
+4 | . . . . P . . . |
+3 | . . N . . N . . |
+2 | P P P P . P P P |
+1 | R . B Q K B . R |
+  +-----------------+
+    a b c d e f g h  
+
+
+Result: 
+  +-----------------+
+8 | r . b q k b . r |
+7 | p p p p . p p p |
+6 | . . n . . n . . |
+5 | . . . . p . . . |
+4 | . . . . P . . . |
+3 | . . N . . N . . |
+2 | P P P P . P P P |
+1 | R . B Q K B . R |
+  +-----------------+
+    a b c d e f g h  
+
+
++ result==sample
+
+----------------------------------------------------------
+D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1743.1.FEN - ASCII/test.4.in
+D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1743.1.FEN - ASCII/test.4.out
+r1n1k1b1/1r1b1q1n/1p1p1p1p/p1p1p1p1/1P1P1P1P/P1P1P1P1/1R1B1Q1N/R1N1K1B1 w - - 0 50
+Sample: 
+  +-----------------+
+8 | r . n . k . b . |
+7 | . r . b . q . n |
+6 | . p . p . p . p |
+5 | p . p . p . p . |
+4 | . P . P . P . P |
+3 | P . P . P . P . |
+2 | . R . B . Q . N |
+1 | R . N . K . B . |
+  +-----------------+
+    a b c d e f g h  
+
+
+Result: 
+  +-----------------+
+8 | r . n . k . b . |
+7 | . r . b . q . n |
+6 | . p . p . p . p |
+5 | p . p . p . p . |
+4 | . P . P . P . P |
+3 | P . P . P . P . |
+2 | . R . B . Q . N |
+1 | R . N . K . B . |
+  +-----------------+
+    a b c d e f g h  
+
+
++ result==sample
+
+----------------------------------------------------------
+D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1743.1.FEN - ASCII/test.5.in
+D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1743.1.FEN - ASCII/test.5.out
+7k/8/8/8/8/8/8/K7 w - - 0 50
+Sample: 
+  +-----------------+
+8 | . . . . . . . k |
+7 | . . . . . . . . |
+6 | . . . . . . . . |
+5 | . . . . . . . . |
+4 | . . . . . . . . |
+3 | . . . . . . . . |
+2 | . . . . . . . . |
+1 | K . . . . . . . |
+  +-----------------+
+    a b c d e f g h  
+
+
+Result: 
+  +-----------------+
+8 | . . . . . . . k |
+7 | . . . . . . . . |
+6 | . . . . . . . . |
+5 | . . . . . . . . |
+4 | . . . . . . . . |
+3 | . . . . . . . . |
+2 | . . . . . . . . |
+1 | K . . . . . . . |
+  +-----------------+
+    a b c d e f g h  
+
+
++ result==sample
+
+----------------------------------------------------------
+D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1743.1.FEN - ASCII/test.6.in
+D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1743.1.FEN - ASCII/test.6.out
+rnb1kbnr/pppp1ppp/4p3/8/6Pq/5P2/PPPPP2P/RNBQKBNR w - - 0 50
+Sample: 
+  +-----------------+
+8 | r n b . k b n r |
+7 | p p p p . p p p |
+6 | . . . . p . . . |
+5 | . . . . . . . . |
+4 | . . . . . . P q |
+3 | . . . . . P . . |
+2 | P P P P P . . P |
+1 | R N B Q K B N R |
+  +-----------------+
+    a b c d e f g h  
+
+
+Result: 
+  +-----------------+
+8 | r n b . k b n r |
+7 | p p p p . p p p |
+6 | . . . . p . . . |
+5 | . . . . . . . . |
+4 | . . . . . . P q |
+3 | . . . . . P . . |
+2 | P P P P P . . P |
+1 | R N B Q K B N R |
+  +-----------------+
+    a b c d e f g h  
+
+
++ result==sample
+
+----------------------------------------------------------
+D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1743.1.FEN - ASCII/test.7.in
+D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1743.1.FEN - ASCII/test.7.out
+r1b2rk1/pp2nNp1/3b3p/q1p1p2Q/1nBpP3/3P2N1/PPPB1PPP/R3K2R w KQ - 3 12
+Sample: 
+  +-----------------+
+8 | r . b . . r k . |
+7 | p p . . n N p . |
+6 | . . . b . . . p |
+5 | q . p . p . . Q |
+4 | . n B p P . . . |
+3 | . . . P . . N . |
+2 | P P P B . P P P |
+1 | R . . . K . . R |
+  +-----------------+
+    a b c d e f g h  
+
+
+Result: 
+  +-----------------+
+8 | r . b . . r k . |
+7 | p p . . n N p . |
+6 | . . . b . . . p |
+5 | q . p . p . . Q |
+4 | . n B p P . . . |
+3 | . . . P . . N . |
+2 | P P P B . P P P |
+1 | R . . . K . . R |
+  +-----------------+
+    a b c d e f g h  
+
+
++ result==sample
+
+----------------------------------------------------------
+D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1743.1.FEN - ASCII/test.8.in
+D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1743.1.FEN - ASCII/test.8.out
+8/6k1/2PPP3/2PKP3/2PPPn2/8/8/8 w - - 0 50
+Sample: 
+  +-----------------+
+8 | . . . . . . . . |
+7 | . . . . . . k . |
+6 | . . P P P . . . |
+5 | . . P K P . . . |
+4 | . . P P P n . . |
+3 | . . . . . . . . |
+2 | . . . . . . . . |
+1 | . . . . . . . . |
+  +-----------------+
+    a b c d e f g h  
+
+
+Result: 
+  +-----------------+
+8 | . . . . . . . . |
+7 | . . . . . . k . |
+6 | . . P P P . . . |
+5 | . . P K P . . . |
+4 | . . P P P n . . |
+3 | . . . . . . . . |
+2 | . . . . . . . . |
+1 | . . . . . . . . |
+  +-----------------+
+    a b c d e f g h  
+
+
++ result==sample
+
+----------------------------------------------------------
+D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1743.1.FEN - ASCII/test.9.in
+D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1743.1.FEN - ASCII/test.9.out
+2b1k3/7p/2p3pP/1pPp1pP1/pP1PpP2/P3P3/8/2B1K3 w - - 0 50
+Sample: 
+  +-----------------+
+8 | . . b . k . . . |
+7 | . . . . . . . p |
+6 | . . p . . . p P |
+5 | . p P p . p P . |
+4 | p P . P p P . . |
+3 | P . . . P . . . |
+2 | . . . . . . . . |
+1 | . . B . K . . . |
+  +-----------------+
+    a b c d e f g h  
+
+
+Result: 
+  +-----------------+
+8 | . . b . k . . . |
+7 | . . . . . . . p |
+6 | . . p . . . p P |
+5 | . p P p . p P . |
+4 | p P . P p P . . |
+3 | P . . . P . . . |
+2 | . . . . . . . . |
+1 | . . B . K . . . |
+  +-----------------+
+    a b c d e f g h  
+
+
++ result==sample
+
+-------------------------------------------------------------------
+1744 1744.1.FEN - BITS _
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1744.1.FEN - BITS _/test.0.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1744.1.FEN - BITS _/test.1.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1744.1.FEN - BITS _/test.2.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1744.1.FEN - BITS _/test.3.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1744.1.FEN - BITS _/test.4.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1744.1.FEN - BITS _/test.5.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1744.1.FEN - BITS _/test.6.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1744.1.FEN - BITS _/test.7.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1744.1.FEN - BITS _/test.8.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1744.1.FEN - BITS _/test.9.in
+-------------------------------------------------------------------
+1745 1745.1.Сборка и разборка
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1745.1.Сборка и разборка/test.0.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1745.1.Сборка и разборка/test.1.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1745.1.Сборка и разборка/test.2.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1745.1.Сборка и разборка/test.3.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1745.1.Сборка и разборка/test.4.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1745.1.Сборка и разборка/test.5.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1745.1.Сборка и разборка/test.6.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1745.1.Сборка и разборка/test.7.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1745.1.Сборка и разборка/test.8.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1745.1.Сборка и разборка/test.9.in
+-------------------------------------------------------------------
+1746 1746.1.Счётчик ходов
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1746.1.Счётчик ходов/test.0.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1746.1.Счётчик ходов/test.1.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1746.1.Счётчик ходов/test.2.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1746.1.Счётчик ходов/test.3.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/1746.1.Счётчик ходов/test.4.in
+-------------------------------------------------------------------
+3694 3694.1.Счётчик полуходов
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3694.1.Счётчик полуходов/test.0.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3694.1.Счётчик полуходов/test.1.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3694.1.Счётчик полуходов/test.2.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3694.1.Счётчик полуходов/test.3.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3694.1.Счётчик полуходов/test.4.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3694.1.Счётчик полуходов/test.5.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3694.1.Счётчик полуходов/test.6.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3694.1.Счётчик полуходов/test.7.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3694.1.Счётчик полуходов/test.8.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3694.1.Счётчик полуходов/test.9.in
+-------------------------------------------------------------------
+3711 3711.1.Перемещение фигуры
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3711.1.Перемещение фигуры/test.0.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3711.1.Перемещение фигуры/test.1.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3711.1.Перемещение фигуры/test.2.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3711.1.Перемещение фигуры/test.3.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3711.1.Перемещение фигуры/test.4.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3711.1.Перемещение фигуры/test.5.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3711.1.Перемещение фигуры/test.6.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3711.1.Перемещение фигуры/test.7.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3711.1.Перемещение фигуры/test.8.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3711.1.Перемещение фигуры/test.9.in
+-------------------------------------------------------------------
+3713 3713.1.Превращение пешки
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3713.1.Превращение пешки/test.0.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3713.1.Превращение пешки/test.1.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3713.1.Превращение пешки/test.2.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3713.1.Превращение пешки/test.3.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3713.1.Превращение пешки/test.4.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3713.1.Превращение пешки/test.5.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3713.1.Превращение пешки/test.6.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3713.1.Превращение пешки/test.7.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3713.1.Превращение пешки/test.8.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3713.1.Превращение пешки/test.9.in
+-------------------------------------------------------------------
+3714 3714.1.Взятие на проходе
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3714.1.Взятие на проходе/test.0.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3714.1.Взятие на проходе/test.1.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3714.1.Взятие на проходе/test.2.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3714.1.Взятие на проходе/test.3.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3714.1.Взятие на проходе/test.4.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3714.1.Взятие на проходе/test.5.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3714.1.Взятие на проходе/test.6.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3714.1.Взятие на проходе/test.7.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3714.1.Взятие на проходе/test.8.in
++ D:/Projects/otus/Algo/4/2019-08-12_Chess-Tasks/3714.1.Взятие на проходе/test.9.in

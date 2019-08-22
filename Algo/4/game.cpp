@@ -2,7 +2,7 @@
 #include "game.h"
 
 //////////////////////////////////////////////////////
-// „ерез двоичное разложение показател¤ степени дл¤ числа
+// через двоичное разложение показателя степени для числа
 //////////////////////////////////////////////////////
 double degree_degree2_multy(double x, int n) {
   double res = 1;
@@ -74,6 +74,8 @@ q blackQueens,
 k blackKing
 */
 
+#define boardByPos(pos)  ((uint64_t)1 << pos)
+
 // разобрать строку и поставить на доску
 void board_s::lineToBoard(int numLine, const char *token) {
   int len = strlen(token);
@@ -94,7 +96,7 @@ void board_s::lineToBoard(int numLine, const char *token) {
 }
 
 // получить номер доски по символу
-int board_s::getBoardByFigure(char c) const {
+int board_s::getBoardByFigure(char c)  {
 
   switch (c) {
   case 'P': // whitePawns
@@ -126,8 +128,8 @@ int board_s::getBoardByFigure(char c) const {
   return -1;
 }
 
-// получить символ по номеру доски
-char board_s::getFigureByBoard(int numBoard) const {
+// получить имя фигуры по номеру доски
+char board_s::getFigureByBoard(int numBoard) {
 
   switch (numBoard) {
     case 0: return 'P'; // whitePawns,
@@ -199,6 +201,12 @@ std::string board_s::upload() const {
   return result;
 }
 
+// построить доску по положению фигуры
+uint64_t board_s::buildBoardByPos(char col, char row) {
+  int pos = (row - 1) * 8 + (col - 'a');
+  return boardByPos(pos);
+}
+
 /////////////////////////////////////////////////////
 game_s::game_s(const char *fen) {
   load(fen);
@@ -239,9 +247,9 @@ bool game_s::load(const char *fen) {
 
   // разбираемс¤ с активным цветом
   if (listStr.get(1)[0] == 'w' || listStr.get(1)[0] == 'W')
-    сolor = eWhiteColor;
+    color = eWhiteColor;
   else
-    сolor = eBlackColor;
+    color = eBlackColor;
 
   // описываем рокировку (как есть - пока толком не пон¤тно, как ее разбирать)
   loadCastling(listStr.get(2));
@@ -287,7 +295,7 @@ std::string game_s::upload() const {
   result += " ";
 
   // разбираемс¤ с активным цветом
-  if (сolor == eWhiteColor)
+  if (color == eWhiteColor)
     result += "w ";
   else
     result += "b ";
@@ -313,15 +321,246 @@ std::string game_s::upload() const {
 // изменить ход
 void game_s::counter() {
 
-  if (сolor == eBlackColor) {
+  if (color == eBlackColor) {
     // следующий ход - белых
     // надо увеличить счетчик
     fullmoveNumber++;
     // мен¤ем сторону
-    сolor = eWhiteColor;
+    color = eWhiteColor;
   }
   else {
     // мен¤ем сторону
-    сolor = eBlackColor;
+    color = eBlackColor;
   }
+}
+
+// разобрать текущий ход из входных данных
+bool game_s::readCurrentMove(const char *move) {
+  
+  // сбрасываем фигуру превращения
+  symTransformFigure = 0;
+
+  int strlenMove = 0;
+  if (!currentMove.init(move, strlenMove))
+    return false;
+
+  currentMove.sourceBoard = board_s::buildBoardByPos(move[0], move[1]);
+  currentMove.targetBoard = board_s::buildBoardByPos(move[2], move[3]);
+
+  switch (strlenMove) {
+    case 4: {
+      // обычный ход
+      return true;
+    }
+    case 5: {
+      // это должна быть пешка с превращением
+      // проверим это точно пешка
+      // ищем номер доски доски, которая соответствует текущему ходу 
+      // с учетом текущего активного цвета
+      int numBoard = getNumBoardByCurrentSourceMoveAndColor();
+      if ((numBoard != numWhitePawns) && (numBoard != numBlackPawns)) {
+        // что-то пошло не так
+        return false;
+      }
+      // фиксируем фигуру превращения
+      symTransformFigure = (color == eWhiteColor) ? toupper(move[4]) : tolower(move[4]);
+      return true;
+    } // case
+
+  }
+  
+  return false;
+}
+
+// Нужно посчитать этот ход, передать право хода другой стороне,
+// а также увеличить или сбросить счётчик полуходов для правила 50 ходов.
+// Счётчик сбрасывается, если было взятие или ход пешкой.
+// В остальных случаях счётчик увеличивается на 1 после каждого полухода.
+void game_s::halfMoveClock() {
+
+  // накидываем полуход
+  // если есть взятие или пешка то он все равно сбросится
+  halfmoveClock++;
+
+  // проверяем если ходит пешка то сбрасываем счетчик
+  // возмем пешечные доски и сверимся
+  int numBoard = (color == eWhiteColor) ? 0 : 6;
+  uint64_t board = piecePlacement.boards[numBoard];
+  if (board & currentMove.sourceBoard) {
+    // это пешка !!!
+    halfmoveClock = 0;
+  }
+  else {
+
+    // ходит не пешка
+    // смотрим может было взятие фигур другого цвета ?
+    // пробежим по остальным доскам и проверим может кого-то побили
+    int numBoard = (color == eWhiteColor) ? 6 : 0;
+    for (int k = numBoard; k < numBoard + 6; ++k) {
+      uint64_t board = piecePlacement.boards[k];
+      if (board & currentMove.targetBoard) {
+        // кого-то побили
+        // сбрасываем счетчик и закругляемся
+        halfmoveClock = 0;
+        break;
+      }
+    } // end for
+
+  }
+}
+
+// Это обычных ход или взятие.
+// Не рокировка, не взятие на проходе, не превращение ферзя, а обычный, самый простой ход со взятием или без.
+void game_s::doSimpleMove() {
+    
+  int numBoard = (color == eWhiteColor) ? 0 : 6;
+  int numSourceBoard = -1, numTargetBoard = -1;
+
+  // ищем номер доски доски, которая соответствует текущему ходу
+  for (int k = numBoard; k < numBoard + 6; ++k) {
+    uint64_t board = piecePlacement.boards[k];
+    if (board & currentMove.sourceBoard) {
+      numSourceBoard = k;
+      break;
+    }
+  }
+
+  numBoard = (color != eWhiteColor) ? 0 : 6;
+  for (int k = numBoard; k < numBoard + 6; ++k) {
+    uint64_t board = piecePlacement.boards[k];
+    if (board & currentMove.targetBoard) {
+      numTargetBoard = k;
+      break;
+    }
+  }
+
+  if (numSourceBoard == -1) {
+    // что-то пошло не так
+    return;
+  }
+
+  // разбираемся с тем кто ходит
+  // сбрасываем исходную позицию
+  piecePlacement.boards[numSourceBoard] &= ~currentMove.sourceBoard;
+  // ставим новую позицию
+  piecePlacement.boards[numSourceBoard] |= currentMove.targetBoard;
+
+  // разбираемся с соперником
+  if (numTargetBoard == -1) {
+    // ставится на чистое поле - доски соперника не трогаем
+  }
+  else {
+    // если съели надо убрать с доски фигуру
+    piecePlacement.boards[numTargetBoard] &= ~currentMove.targetBoard;
+  }
+ 
+  // проверим если это пешка и был скачок на два хода и есть рядом пешка
+  // то поставим битовое поле
+  if (numSourceBoard == numBlackPawns || numSourceBoard == numWhitePawns) {
+
+    if ((labs(currentMove.source.row - currentMove.target.row) == 2) &&
+      (currentMove.source.col == currentMove.target.col))
+    {
+      // смотрим есть ли рядом с целевым полем пешки другого цвета ?      
+      int numPawnBoard = board_s::getBoardByFigure((color != eWhiteColor) ? symWhitePawns : symBlackPawns);
+      if (numPawnBoard == -1)
+        return;
+      uint64_t pawnBoard = piecePlacement.boards[numPawnBoard];
+
+      // посчитаем позиции соседних полей
+      bool bAddBitField = false;
+      if (currentMove.target.col != 'a') {
+        uint64_t boardLeft = board_s::buildBoardByPos(currentMove.target.col - 1, currentMove.target.row);
+        if (pawnBoard & boardLeft)
+          bAddBitField = true;
+      }
+      if (currentMove.target.col != 'f') {
+        uint64_t boardRight = board_s::buildBoardByPos(currentMove.target.col + 1, currentMove.target.row);
+        if (pawnBoard & boardRight)
+          bAddBitField = true;
+      }
+      if (bAddBitField) {
+        // формируем признак битового поля
+        char row = (currentMove.target.row + currentMove.source.row) / 2;
+        enPassant[0] = currentMove.target.col;
+        enPassant[1] = row;
+        enPassant[2] = '\0';
+      }
+      else {
+        strcpy_s(enPassant, sizeof(enPassant), "-");
+      }
+
+      return;
+    }
+    // обработка взятия на проходе
+    // смотрим если битовое поле совпадает с целевым полем значит 
+    // было взятие на проходе и надо убрать целевой ход с доски
+    if (strlen(enPassant) == 2) {
+      pos_s passant(enPassant[0], enPassant[1]);
+      if (passant == currentMove.target) {
+        // это взятие на проходе - конструируем положение противной фигуры
+        // которую надо снять
+        pos_s bit;
+        bit.col = passant.col;
+        bit.row = currentMove.source.row;
+        uint64_t passantBoard = board_s::buildBoardByPos(bit.col, bit.row);
+        // снимаем
+        int numPawnBoard = board_s::getBoardByFigure((color != eWhiteColor) ? symWhitePawns : symBlackPawns);
+        if (numPawnBoard == -1)
+          return;
+        piecePlacement.boards[numPawnBoard] &=~passantBoard;
+      }
+    }
+
+  }
+
+  strcpy_s(enPassant, sizeof(enPassant), "-");
+}
+
+// проверить является ли ход превращением пешки
+bool game_s::isPawnTransform() {
+  return symTransformFigure != 0;
+}
+
+// Превращение пешки и передача хода.
+// Проверка на возможность хода не делается.  
+void game_s::doTransformMove() {
+  // делаем простой ход
+  doSimpleMove();
+
+  // после простого хода пешка стоит на новом месте
+  // меняем пешку на фигуру превращения
+
+  // найти номер доски пешки
+  int numPawnBoard = board_s::getBoardByFigure( (color == eWhiteColor) ? symWhitePawns : symBlackPawns);
+  if (numPawnBoard == -1)
+    return;
+  
+  // сбросить целевую позицию
+  piecePlacement.boards[numPawnBoard] &= ~currentMove.targetBoard;
+
+  // найти доску активного цвета по фигуре превращения
+  int numTransformBoard = board_s::getBoardByFigure(symTransformFigure);
+  if (numTransformBoard == -1)
+    return;
+
+  // поставить фигуру превращения на доску
+  piecePlacement.boards[numTransformBoard] |= currentMove.targetBoard;
+}
+
+// ищем номер доски доски, которая соответствует текущему ходу 
+// с учетом текущего активного цвета
+int game_s::getNumBoardByCurrentSourceMoveAndColor() {
+
+  int numBoard = (color == eWhiteColor) ? 0 : 6;
+  int numSourceBoard = -1;
+
+  for (int k = numBoard; k < numBoard + 6; ++k) {
+    uint64_t board = piecePlacement.boards[k];
+    if (board & currentMove.sourceBoard) {
+      numSourceBoard = k;
+      break;
+    }
+  }
+  return numSourceBoard;
 }

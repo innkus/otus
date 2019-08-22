@@ -18,6 +18,7 @@
 #include <vector>
 #include <sstream>
 #include <stdio.h>
+#include <cctype> 
 
 
 #endif //PCH_H

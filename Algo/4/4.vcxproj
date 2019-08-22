@@ -160,6 +160,10 @@
     <ClCompile Include="1744.cpp" />
     <ClCompile Include="1745.cpp" />
     <ClCompile Include="1746.cpp" />
+    <ClCompile Include="3694.cpp" />
+    <ClCompile Include="3711.cpp" />
+    <ClCompile Include="3713.cpp" />
+    <ClCompile Include="3714.cpp" />
     <ClCompile Include="4.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="pch.cpp">
