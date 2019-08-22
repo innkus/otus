@@ -27,15 +27,15 @@ int RightChild(int index) {
   return index * 2 + 2;
 }
 
-// Простой обмен !!!!
+// РџСЂРѕСЃС‚РѕР№ РѕР±РјРµРЅ !!!!
 void Swap(int *Heap, int i, int j) {
   int x = Heap[i];
   Heap[i] = Heap[j];
   Heap[j] = x;
 }
 
-// (Пирамида, индекс, ограничения на массив)
-// рекурсия
+// (РџРёСЂР°РјРёРґР°, РёРЅРґРµРєСЃ, РѕРіСЂР°РЅРёС‡РµРЅРёСЏ РЅР° РјР°СЃСЃРёРІ)
+// СЂРµРєСѓСЂСЃРёСЏ
 void Drown(int *Heap, int i, int size) {
 
   int left = LeftChild(i);
@@ -54,12 +54,12 @@ void Drown(int *Heap, int i, int size) {
 
   if (largest != i) {
     Swap(Heap, i, largest);
-    Drown(Heap, largest, size); // рекурсия    
+    Drown(Heap, largest, size); // СЂРµРєСѓСЂСЃРёСЏ    
   }
 }
 
-// (Пирамида, индекс, ограничения на массив)
-// итеративный алгоритм
+// (РџРёСЂР°РјРёРґР°, РёРЅРґРµРєСЃ, РѕРіСЂР°РЅРёС‡РµРЅРёСЏ РЅР° РјР°СЃСЃРёРІ)
+// РёС‚РµСЂР°С‚РёРІРЅС‹Р№ Р°Р»РіРѕСЂРёС‚Рј
 void DrownIter(int *Heap, int i, int size) {
 
   int iBase = i;
@@ -292,8 +292,8 @@ void test(bool bIter) {
 
 int main()
 {
-  // рекурсивно
+  // СЂРµРєСѓСЂСЃРёРІРЅРѕ
   test(false);
-  // итеративно
+  // РёС‚РµСЂР°С‚РёРІРЅРѕ
   test(true);
 }
