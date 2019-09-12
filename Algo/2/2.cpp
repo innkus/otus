@@ -85,7 +85,7 @@ void testFunctions() {
   l.testBaseFunctions();
 }
 
-// тест изменение зерна массивов
+// тест изменение зерна массивов для массивов с возможностью изменения шага заполнения
 void testSeed() {
   timeMesuare tm;
   
@@ -94,7 +94,7 @@ void testSeed() {
     int N = 100000;
     std::cout << "VectorArray, testSeed elemCount=" << N << std::endl;
     std::cout << "seed;InsertBegin,ms;RemoveBegin,ms;InsertEnd,ms;RemoveEnd,ms;InsertMiddle,ms;RemoveMiddle,ms\n";
-    for (uint64_t i = 100; i < 10000000; i += 100) {
+    for (uint64_t i = 100; i < 1200; i += 100) {
 
       VectorArray<int> vectorArray(i);
       std::cout << i << ";";
@@ -278,13 +278,86 @@ void testSeed() {
 
 }
 
+// тестирование на вставку в конец и удаление из начала для
+// простого массива и массива с очередью
+void testSimpleAndLinked() {
 
+  timeMesuare tm;
+  int N1 = 100000;
+  
+  {
+    int N = N1;
+    std::cout << "SingleArray, elemCount=" << N << std::endl;
+    std::cout << "InsertEnd,ms;RemoveStart,ms\n";
+    for (uint64_t iCount = 100; iCount < N; iCount += 100) {
+
+      SingleArray<int> vectorArray;
+      std::cout << iCount << ";";
+
+      // вставка в конец
+      tm.start();
+      for (int j = 0; j < iCount; ++j) {
+        vectorArray.add(j, j);
+      }
+      tm.stop();
+      tm.print(); std::cout << ";";
+
+      // удаление с начала
+      tm.start();
+      while (vectorArray.size()) {
+        vectorArray.remove(0);
+      }
+      tm.stop();
+      tm.print(); std::cout << "\n";
+    }
+
+  }
+  
+  std::cout << "\n\n";
+
+  {    
+    int N = N1;
+    std::cout << "LinkedArray, elemCount=" << N << std::endl;
+    std::cout << "InsertEnd,ms;RemoveStart,ms\n";
+    for (uint64_t iCount = 100; iCount < N; iCount += 100) {
+
+      LinkedArray<int> vectorArray;
+      std::cout << iCount << ";";
+
+      // вставка в конец
+      tm.start();
+      for (int j = 0; j < iCount; ++j) {
+        vectorArray.add(j, j);
+      }
+      tm.stop();
+      tm.print(); std::cout << ";";
+
+      // удаление с начала
+      tm.start();
+      while (vectorArray.size()) {
+        vectorArray.remove(0);
+      }
+      tm.stop();
+      tm.print(); std::cout << "\n";
+    }
+
+  }
+
+}
 
 int main()
 {
-  //testFunctions();
+  // тестирование базовой функциональнсти
+  // testFunctions();
 
-  testSeed();
+  // тестирование массивов с именением зерна для
+  // VectorArray FactorArray MatrixArray
+  // testSeed();
+
+  // тестирование на вставку в конец и удаление из начала для
+  // простого массива и массива с очередью
+  testSimpleAndLinked();
+
   return 0;
 
   SingleArray<IArray<int>*> arrays;

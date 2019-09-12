@@ -44,6 +44,13 @@ public:
 
     T deletedItem = get(index);
 
+    if (length == 1) {
+      length--;
+      delete[]array;
+      array = nullptr;
+      return deletedItem;
+    }
+
     // сдвигаем хвост на 1 элемент
     memcpy(array + index, array + index + 1, sizeof(T)*(size() - (index + 1)));
 
@@ -51,6 +58,8 @@ public:
     length--;
     T *newArray = new T[length];
     memcpy(newArray, array, sizeof(T)*size());
+    delete[]array;
+    array = newArray;
     return deletedItem;
   }
 
