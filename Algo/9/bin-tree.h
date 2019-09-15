@@ -5,11 +5,11 @@
 #include <string>
 #include "avl-tree-hei.h"
 
-// Реализовать АВЛ или Декартово дерево
-// Вариант 1. Написать реализацию АВЛ - дерева
-// Методы к реализации :
-// smallLeft / RightRotation - малое левое / правое вращение
-// bigLeft / RightRotation - большое левое / правое вращение, написать через вызов малых вращений
+// Р РµР°Р»РёР·РѕРІР°С‚СЊ РђР’Р› РёР»Рё Р”РµРєР°СЂС‚РѕРІРѕ РґРµСЂРµРІРѕ
+// Р’Р°СЂРёР°РЅС‚ 1. РќР°РїРёСЃР°С‚СЊ СЂРµР°Р»РёР·Р°С†РёСЋ РђР’Р› - РґРµСЂРµРІР°
+// РњРµС‚РѕРґС‹ Рє СЂРµР°Р»РёР·Р°С†РёРё :
+// smallLeft / RightRotation - РјР°Р»РѕРµ Р»РµРІРѕРµ / РїСЂР°РІРѕРµ РІСЂР°С‰РµРЅРёРµ
+// bigLeft / RightRotation - Р±РѕР»СЊС€РѕРµ Р»РµРІРѕРµ / РїСЂР°РІРѕРµ РІСЂР°С‰РµРЅРёРµ, РЅР°РїРёСЃР°С‚СЊ С‡РµСЂРµР· РІС‹Р·РѕРІ РјР°Р»С‹С… РІСЂР°С‰РµРЅРёР№
 // insert
 // remove
 // rebalance
@@ -18,7 +18,7 @@ template <typename Key, typename Value>
 class BinTree : public IBinTree<Key, Value> {
 public:
 
-  // проверка дерева на корректность
+  // РїСЂРѕРІРµСЂРєР° РґРµСЂРµРІР° РЅР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ
   virtual bool check() override {
     const TreeLeaf<Key, Value> *errorNode = checkNode(root);
     if (errorNode) {
@@ -27,11 +27,11 @@ public:
     return !errorNode;
   }
 
-  // вставка несбалансированная
+  // РІСЃС‚Р°РІРєР° РЅРµСЃР±Р°Р»Р°РЅСЃРёСЂРѕРІР°РЅРЅР°СЏ
   virtual void insert(const Key &key, const Value &value = 0) override {
     TreeLeaf<Key, Value> *pNew = new TreeLeaf<Key, Value>();
     pNew->key = key;
-    /* в целях отладки значение равно ключу */
+    /* РІ С†РµР»СЏС… РѕС‚Р»Р°РґРєРё Р·РЅР°С‡РµРЅРёРµ СЂР°РІРЅРѕ РєР»СЋС‡Сѓ */
     pNew->value = key;
     if (!root) {
       root = pNew;
@@ -63,14 +63,14 @@ public:
   virtual bool isEmpty() override {
     return !root;
   }
-  // удаление несбалансированнове
+  // СѓРґР°Р»РµРЅРёРµ РЅРµСЃР±Р°Р»Р°РЅСЃРёСЂРѕРІР°РЅРЅРѕРІРµ
   virtual Value remove(const Key &key) override {
     TreeLeaf<Key, Value> *removed = find(key, root);
     if (!removed)
       return Value();
 
     if (!removed->parent) {
-      // это корень     
+      // СЌС‚Рѕ РєРѕСЂРµРЅСЊ     
 
       if (removed->left) {
         root = removed->left;
@@ -79,23 +79,23 @@ public:
           insertNode(root, removed->right);
       }
       else {
-        // левого узла нет
-        // просто перекидываем корень направо
+        // Р»РµРІРѕРіРѕ СѓР·Р»Р° РЅРµС‚
+        // РїСЂРѕСЃС‚Рѕ РїРµСЂРµРєРёРґС‹РІР°РµРј РєРѕСЂРµРЅСЊ РЅР°РїСЂР°РІРѕ
         root = removed->right;
         if(root)
           root->parent = nullptr;
       }
     }
     else {
-      // где-то в серединке
-      // у родителя убираем ссылку
+      // РіРґРµ-С‚Рѕ РІ СЃРµСЂРµРґРёРЅРєРµ
+      // Сѓ СЂРѕРґРёС‚РµР»СЏ СѓР±РёСЂР°РµРј СЃСЃС‹Р»РєСѓ
       TreeLeaf<Key, Value> *parent = removed->parent;
 
-      // отрываем ссылку у родителя
+      // РѕС‚СЂС‹РІР°РµРј СЃСЃС‹Р»РєСѓ Сѓ СЂРѕРґРёС‚РµР»СЏ
       parent->left == removed ? 
         parent->left = nullptr : parent->right = nullptr;
 
-      // разбираемся с поддеревьями
+      // СЂР°Р·Р±РёСЂР°РµРјСЃСЏ СЃ РїРѕРґРґРµСЂРµРІСЊСЏРјРё
       if (removed->left)
         insertNode(parent, removed->left);
       if (removed->right)
@@ -108,7 +108,7 @@ public:
     return result;
   }
 
-  // получить корень дерева
+  // РїРѕР»СѓС‡РёС‚СЊ РєРѕСЂРµРЅСЊ РґРµСЂРµРІР°
   virtual TreeLeaf<Key, Value> *getRoot() override {
     return root;
   }
@@ -131,10 +131,10 @@ public:
   }
 
 
-  // тест обычной вставки + тест поиска
+  // С‚РµСЃС‚ РѕР±С‹С‡РЅРѕР№ РІСЃС‚Р°РІРєРё + С‚РµСЃС‚ РїРѕРёСЃРєР°
   void testBaseFunctions() {
     {
-      // дерево влево
+      // РґРµСЂРµРІРѕ РІР»РµРІРѕ
       BinTree<int, int> tb;
       std::string checkout = "K5 L(K4 L(K3 L(K2 L(K1))))";
       int node[] = { 5,4,3,2,1 };
@@ -148,14 +148,14 @@ public:
         std::cout << "+Insert " << tb.sprint() << std::endl;
       }
 
-      // поиск всех элементов
+      // РїРѕРёСЃРє РІСЃРµС… СЌР»РµРјРµРЅС‚РѕРІ
       for (int i = 0; i < sizeof(node) / sizeof(int); ++i) {
         if (node[i] != tb.find(node[i])) {
           std::cout << "ERROR FIND: \n" << checkout << " !=  \n" << tb.sprint() << std::endl;
         }
       }
 
-      // удаление
+      // СѓРґР°Р»РµРЅРёРµ
       for (int i = 0; i < sizeof(node) / sizeof(int); ++i) {
         if (node[i] != tb.remove(node[i])) {
           std::cout << "ERROR REMOVE: " << node[i] << std::endl;
@@ -169,10 +169,10 @@ public:
     }
 
     {
-      // дерево вправо
+      // РґРµСЂРµРІРѕ РІРїСЂР°РІРѕ
       BinTree<int, int> tb;
       std::string checkout = "K1 R(K2 R(K3 R(K4 R(K5))))";
-      // дерево влево
+      // РґРµСЂРµРІРѕ РІР»РµРІРѕ
       int node[] = { 1,2,3,4,5 };
       for (int i = 0; i < sizeof(node) / sizeof(int); ++i) {
         tb.insert(node[i]);
@@ -184,14 +184,14 @@ public:
         std::cout << "+Insert " << tb.sprint() << std::endl;
       }
 
-      // поиск всех элементов
+      // РїРѕРёСЃРє РІСЃРµС… СЌР»РµРјРµРЅС‚РѕРІ
       for (int i = 0; i < sizeof(node) / sizeof(int); ++i) {
         if (node[i] != tb.find(node[i])) {
           std::cout << "ERROR FIND: \n" << checkout << " !=  \n" << tb.sprint() << std::endl;
         }
       }
 
-      // удаление
+      // СѓРґР°Р»РµРЅРёРµ
       for (int i = 0; i < sizeof(node) / sizeof(int); ++i) {
         if (node[i] != tb.remove(node[i])) {
           std::cout << "ERROR REMOVE: " << node[i] << std::endl;
@@ -205,10 +205,10 @@ public:
     }
 
     {
-      // дерево разнообразное
+      // РґРµСЂРµРІРѕ СЂР°Р·РЅРѕРѕР±СЂР°Р·РЅРѕРµ
       BinTree<int, int> tb;
       std::string checkout = "K1 R(K8 L(K5 L(K4) R(K6 R(K7))) R(K9))";
-      // дерево влево
+      // РґРµСЂРµРІРѕ РІР»РµРІРѕ
       int node[] = { 1, 8, 5, 6, 7, 4, 9 };
       for (int i = 0; i < sizeof(node) / sizeof(int); ++i) {
         tb.insert(node[i]);
@@ -220,14 +220,14 @@ public:
         std::cout << "+Insert " << tb.sprint() << std::endl;
       }
 
-      // поиск всех элементов
+      // РїРѕРёСЃРє РІСЃРµС… СЌР»РµРјРµРЅС‚РѕРІ
       for (int i = 0; i < sizeof(node) / sizeof(int); ++i) {
         if (node[i] != tb.find(node[i])) {
           std::cout << "ERROR FIND: \n" << checkout << " !=  \n" << tb.sprint() << std::endl;
         }
       }
 
-      // удаление
+      // СѓРґР°Р»РµРЅРёРµ
       for (int i = 0; i < sizeof(node) / sizeof(int); ++i) {
         if (node[i] != tb.remove(node[i])) {
           std::cout << "ERROR REMOVE: " << node[i] << std::endl;
@@ -248,15 +248,15 @@ public:
 
 private:
 
-  // вставка несбалансированная
+  // РІСЃС‚Р°РІРєР° РЅРµСЃР±Р°Р»Р°РЅСЃРёСЂРѕРІР°РЅРЅР°СЏ
   virtual void insertNode(TreeLeaf<Key, Value> *localRoot, TreeLeaf<Key, Value> *pNew) {
     TreeLeaf<Key, Value> **ppChild = nullptr;
     if (pNew->key < localRoot->key) {
-      // добавление влево
+      // РґРѕР±Р°РІР»РµРЅРёРµ РІР»РµРІРѕ
       ppChild = &localRoot->left;
     }
     else {
-      // добавление вправо
+      // РґРѕР±Р°РІР»РµРЅРёРµ РІРїСЂР°РІРѕ
       ppChild = &localRoot->right;
     }
 
@@ -302,12 +302,12 @@ private:
     }
   }
 
-  // проверка дерева на корректность
+  // РїСЂРѕРІРµСЂРєР° РґРµСЂРµРІР° РЅР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ
   const TreeLeaf<Key, Value> *checkNode(const TreeLeaf<Key, Value> *root) const {
     if (!root)
       return nullptr;
 
-    // проверяем чтобы левый потомок был меньше корня
+    // РїСЂРѕРІРµСЂСЏРµРј С‡С‚РѕР±С‹ Р»РµРІС‹Р№ РїРѕС‚РѕРјРѕРє Р±С‹Р» РјРµРЅСЊС€Рµ РєРѕСЂРЅСЏ
     if (root->left)
     {
       if (root->left->key < root->value)
@@ -316,7 +316,7 @@ private:
         return root;
     }
 
-    // проверяем чтобы правый потомок был больше корня
+    // РїСЂРѕРІРµСЂСЏРµРј С‡С‚РѕР±С‹ РїСЂР°РІС‹Р№ РїРѕС‚РѕРјРѕРє Р±С‹Р» Р±РѕР»СЊС€Рµ РєРѕСЂРЅСЏ
     if (root->right)
     {
       if (root->right->key >= root->value)

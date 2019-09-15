@@ -2,11 +2,11 @@
 
 #include <string>
 
-// Реализовать АВЛ или Декартово дерево
-// Вариант 1. Написать реализацию АВЛ - дерева
-// Методы к реализации :
-// smallLeft / RightRotation - малое левое / правое вращение
-// bigLeft / RightRotation - большое левое / правое вращение, написать через вызов малых вращений
+// Р РµР°Р»РёР·РѕРІР°С‚СЊ РђР’Р› РёР»Рё Р”РµРєР°СЂС‚РѕРІРѕ РґРµСЂРµРІРѕ
+// Р’Р°СЂРёР°РЅС‚ 1. РќР°РїРёСЃР°С‚СЊ СЂРµР°Р»РёР·Р°С†РёСЋ РђР’Р› - РґРµСЂРµРІР°
+// РњРµС‚РѕРґС‹ Рє СЂРµР°Р»РёР·Р°С†РёРё :
+// smallLeft / RightRotation - РјР°Р»РѕРµ Р»РµРІРѕРµ / РїСЂР°РІРѕРµ РІСЂР°С‰РµРЅРёРµ
+// bigLeft / RightRotation - Р±РѕР»СЊС€РѕРµ Р»РµРІРѕРµ / РїСЂР°РІРѕРµ РІСЂР°С‰РµРЅРёРµ, РЅР°РїРёСЃР°С‚СЊ С‡РµСЂРµР· РІС‹Р·РѕРІ РјР°Р»С‹С… РІСЂР°С‰РµРЅРёР№
 // insert
 // remove
 // rebalance
@@ -20,52 +20,52 @@ std::string& operator<< (std::string &out, const std::string &in) {
 template <typename Key, typename Value>
 class TreeLeaf { 
 public:
-  Key key;     
-  Value value;    
-  TreeLeaf *parent = nullptr;    
+  Key key;     
+  Value value;
+  TreeLeaf *parent = nullptr;
   TreeLeaf *left = nullptr;
   TreeLeaf *right = nullptr;
 
-  // тип сбалансированности /enum balanceType
+  // С‚РёРї СЃР±Р°Р»Р°РЅСЃРёСЂРѕРІР°РЅРЅРѕСЃС‚Рё /enum balanceType
   int balance = eBalanced;
 
-  // высота узла
+  // РІС‹СЃРѕС‚Р° СѓР·Р»Р°
   int height = 1;
 };
 
-// тип сбалансированности узла
+// С‚РёРї СЃР±Р°Р»Р°РЅСЃРёСЂРѕРІР°РЅРЅРѕСЃС‚Рё СѓР·Р»Р°
 enum balanceType {
-  eBalanced   = 0,    // оба поддерева имеют одну глубину
-  eLeftHeavy  = -1,   // левое поддерево длиннее
-  eRightHeavy = +1    // правое поддерево длинее
+  eBalanced   = 0,    // РѕР±Р° РїРѕРґРґРµСЂРµРІР° РёРјРµСЋС‚ РѕРґРЅСѓ РіР»СѓР±РёРЅСѓ
+  eLeftHeavy  = -1,   // Р»РµРІРѕРµ РїРѕРґРґРµСЂРµРІРѕ РґР»РёРЅРЅРµРµ
+  eRightHeavy = +1    // РїСЂР°РІРѕРµ РїРѕРґРґРµСЂРµРІРѕ РґР»РёРЅРµРµ
 };
 
-// smallLeft / RightRotation - малое левое / правое вращение
-// bigLeft / RightRotation - большое левое / правое вращение, написать через вызов малых вращений
+// smallLeft / RightRotation - РјР°Р»РѕРµ Р»РµРІРѕРµ / РїСЂР°РІРѕРµ РІСЂР°С‰РµРЅРёРµ
+// bigLeft / RightRotation - Р±РѕР»СЊС€РѕРµ Р»РµРІРѕРµ / РїСЂР°РІРѕРµ РІСЂР°С‰РµРЅРёРµ, РЅР°РїРёСЃР°С‚СЊ С‡РµСЂРµР· РІС‹Р·РѕРІ РјР°Р»С‹С… РІСЂР°С‰РµРЅРёР№
 // insert
 // remove
 // rebalance
 
 template <typename Key, typename Value>
 struct IBinTree {
-  // вставка узла
+  // РІСЃС‚Р°РІРєР° СѓР·Р»Р°
   virtual void insert(const Key &key, const Value &value) = 0;
-  // удаление узла
+  // СѓРґР°Р»РµРЅРёРµ СѓР·Р»Р°
   virtual Value remove(const Key &key) = 0;
-  // печать
+  // РїРµС‡Р°С‚СЊ
   virtual void print() = 0;
-  // найти элемент
+  // РЅР°Р№С‚Рё СЌР»РµРјРµРЅС‚
   virtual Value find(const Key &key) = 0;
-  // проверить пустое ли дерево
+  // РїСЂРѕРІРµСЂРёС‚СЊ РїСѓСЃС‚РѕРµ Р»Рё РґРµСЂРµРІРѕ
   virtual bool isEmpty() = 0;
 
-  // проверка дерева на корректность
+  // РїСЂРѕРІРµСЂРєР° РґРµСЂРµРІР° РЅР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ
   virtual bool check() = 0;
-  // получить корень дерева
+  // РїРѕР»СѓС‡РёС‚СЊ РєРѕСЂРµРЅСЊ РґРµСЂРµРІР°
   virtual TreeLeaf<Key, Value> *getRoot() = 0;
-  // проверка базовой функциональности
+  // РїСЂРѕРІРµСЂРєР° Р±Р°Р·РѕРІРѕР№ С„СѓРЅРєС†РёРѕРЅР°Р»СЊРЅРѕСЃС‚Рё
   virtual void testBaseFunctions() = 0;
-  // имя дерева
+  // РёРјСЏ РґРµСЂРµРІР°
   virtual std::string name() = 0;
 };
 
