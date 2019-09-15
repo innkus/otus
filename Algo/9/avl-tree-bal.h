@@ -13,6 +13,7 @@
 // remove
 // rebalance
 
+// для построения дерева используем величину баланса
 template <typename Key, typename Value>
 class AvlTreeBal : public IBinTree<Key, Value> {
 public:

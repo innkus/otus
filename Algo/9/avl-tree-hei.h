@@ -13,6 +13,8 @@
 // remove
 // rebalance
 
+
+// для построения дерева используем высоты
 template <typename Key, typename Value>
 class AvlTreeHeight : public IBinTree<Key, Value> {
 public:
