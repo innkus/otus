@@ -1,10 +1,34 @@
 // arrays.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 #pragma once
-
 #include "pch.h"
-
 #define max(a,b) ((a > b) ? (a) : (b)) 
+
+using namespace std::chrono;
+
+class timeMesuare {
+public:
+  void start() {
+    elapsed_milliseconds = 0;
+    std::chrono::time_point<std::chrono::system_clock> start, end;
+    startTime = std::chrono::system_clock::now();
+  }
+  void stop() {
+    endTime = std::chrono::system_clock::now();
+    elapsed_milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>
+      (endTime - startTime).count();
+  }
+  void print() {
+    std::cout << elapsed_milliseconds;
+  }
+  __int64 data() {
+    return elapsed_milliseconds;
+  }
+private:
+  std::chrono::time_point<std::chrono::system_clock> startTime;
+  std::chrono::time_point<std::chrono::system_clock> endTime;
+  __int64 elapsed_milliseconds;
+};
 
 template <typename T>
 struct IArray {
@@ -19,6 +43,57 @@ struct IArray {
 
   /// тестирование вставка в начало
   /// @param count 
+  void test(int64_t count) {
+    timeMesuare tm;
+
+    //count;intoBegin;fromBegin;intoMiddle;fromMiddle;intoEnd;fromEnd
+    std::cout << count << ";";
+
+    tm.start();
+    for (int i = 0; i < count; ++i) {
+      add(i,0);
+    }
+    tm.stop();
+    std::cout << tm.data() << ";";
+
+    tm.start();
+    for (int i = 0; i < count; ++i) {
+      remove(0);
+    }
+    tm.stop();
+    std::cout << tm.data() << ";";
+
+    tm.start();
+    for (int i = 0; i < count; ++i) {
+      add(i, size()/2);
+    }
+    tm.stop();
+    std::cout << tm.data() << ";";
+
+    tm.start();
+    while (size()) {
+      remove(size() / 2);
+    }
+    tm.stop();
+    std::cout << tm.data() << ";";
+
+    tm.start();
+    for (int i = 0; i < count; ++i) {
+      add(i);
+    }
+    tm.stop();
+    std::cout << tm.data() << ";";
+
+    tm.start();
+    while (size()) {
+      remove(size()-1);
+    }
+    tm.stop();
+    std::cout << tm.data() << ";";
+  }
+
+  /// тестирование вставка в начало
+  /// @param count 
   int64_t testAdd(int64_t count) {
 
     clear();
@@ -29,17 +104,11 @@ struct IArray {
 
     for (int i = 0; i < count; ++i) {
       add(i);
-
-      end = std::chrono::system_clock::now();
-      elapsed_milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>
-        (end - start).count();
-
-      if (elapsed_milliseconds > 10000) {
-        //std::cout << name() << "(" << size() << ") :" << " N=" << count << " Tms >> " << elapsed_milliseconds << std::endl;
-        //return elapsed_milliseconds;
-      }
     }
 
+    end = std::chrono::system_clock::now();
+    elapsed_milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>
+      (end - start).count();
     std::cout << name() << "(" << size() << ") :" << " N=" << count << " Tms=" << elapsed_milliseconds << std::endl;
     return elapsed_milliseconds;
   }

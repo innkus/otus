@@ -41,29 +41,6 @@
 // Делать на основе одного из уже созданных массивов и / или списков.
 // + 2 балла дополнительно.
 
-using namespace std::chrono;
-
-class timeMesuare {
-public:
-  void start() {    
-    elapsed_milliseconds = 0;
-    std::chrono::time_point<std::chrono::system_clock> start, end;
-    startTime = std::chrono::system_clock::now();
-  }
-  void stop() {    
-    endTime = std::chrono::system_clock::now();
-    elapsed_milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>
-      (endTime - startTime).count();
-  }
-  void print() {
-    std::cout << elapsed_milliseconds;
-  }
-private:
-  std::chrono::time_point<std::chrono::system_clock> startTime;
-  std::chrono::time_point<std::chrono::system_clock> endTime;
-  __int64 elapsed_milliseconds;
-};
-
 // простое тестирование на функциональность
 void testFunctions() {
   PriorityQueue<int> q;
@@ -345,8 +322,56 @@ void testSimpleAndLinked() {
 
 }
 
+void test() {
+  
+  SingleArray<IArray<int>*> arrays;
+  
+  SingleArray<int> singleArray;
+  arrays.add((IArray<int>*)&singleArray);
+
+  VectorArray<int> vectorArray(100);
+  arrays.add((IArray<int>*)&vectorArray);
+
+  FactorArray<int> factorArray(100);
+  arrays.add((IArray<int>*)&factorArray);
+  
+  MatrixArray<int> matrixArray(100);
+  arrays.add((IArray<int>*)&matrixArray);
+
+  LinkedArray<int> linkedArray;
+  arrays.add((IArray<int>*)&linkedArray);
+  
+  for (int i = 0; i < arrays.size(); ++i) {
+    std::cout << arrays.get(i)->name() << ";count;intoBegin;fromBegin;intoMiddle;fromMiddle;intoEnd;fromEnd\n";
+    arrays.get(i)->test(100); std::cout << "\n";
+    arrays.get(i)->test(200); std::cout << "\n";
+    arrays.get(i)->test(400); std::cout << "\n";
+    arrays.get(i)->test(800); std::cout << "\n";
+    arrays.get(i)->test(1600);       std::cout << "\n";
+    arrays.get(i)->test(3200);       std::cout << "\n";
+    arrays.get(i)->test(6400);       std::cout << "\n";
+    arrays.get(i)->test(12800);      std::cout << "\n";
+    arrays.get(i)->test(15000);      std::cout << "\n";
+    arrays.get(i)->test(20000);      std::cout << "\n";
+    arrays.get(i)->test(25600);      std::cout << "\n";
+    arrays.get(i)->test(40000);      std::cout << "\n";
+    arrays.get(i)->test(51200);      std::cout << "\n";
+    arrays.get(i)->test(70000);      std::cout << "\n";
+    arrays.get(i)->test(90000);      std::cout << "\n";
+    arrays.get(i)->test(102400);     std::cout << "\n";
+    arrays.get(i)->test(150000);     std::cout << "\n";
+    arrays.get(i)->test(204800);     std::cout << "\n";
+    arrays.get(i)->test(250000);     std::cout << "\n";
+    arrays.get(i)->test(300000);     std::cout << "\n";
+    arrays.get(i)->test(350000);     std::cout << "\n";
+    arrays.get(i)->test(409600);     std::cout << "\n";
+    std::cout << "\n";
+  }
+}
+
 int main()
 {
+  test();
   // тестирование базовой функциональнсти
   // testFunctions();
 
@@ -356,7 +381,7 @@ int main()
 
   // тестирование на вставку в конец и удаление из начала для
   // простого массива и массива с очередью
-  testSimpleAndLinked();
+  // testSimpleAndLinked();
 
   return 0;
 
