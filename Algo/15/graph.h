@@ -8,19 +8,6 @@
 //
 class myGraph : graph {
 public:
-  // загрузка матрицы смежности из файла 
-  // задается квадратная матрица
-  // между элементами пробелы
-  myGraph(std::string &fileName) {
-    std::ifstream inFile(fileName);
-
-    std::string line;
-    while (std::getline(inFile, line))
-    {
-      // считали строку теперь надо разобрать
-      int a = std::stoi(line.data());
-    }
-  }
   //
   myGraph(int N, const int *data) {    
     init(N, data);
