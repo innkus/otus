@@ -34,6 +34,15 @@ namespace global {
     std::cout << "\n";
   }
 
+  // печать вектора с ребрами
+  void printEdges(const VectorArray<edge<int, int>> &v) {
+    std::cout << "vector" << " (" << v.size() << ") :\n";
+    for (int i = 0; i < v.size(); ++i) {
+      std::cout << "[" << v.get(i).a << ";" << v.get(i).b << "]=" << v.get(i).weight << "\n";
+    }
+    std::cout << "\n";
+  }
+
 };
 
 

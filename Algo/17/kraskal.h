@@ -32,7 +32,9 @@ public:
   }
   
   //
-  bool doSpanningTree() {
+  VectorArray<edge<T, int>> doSpanningTree() {
+    VectorArray<edge<T, int>> result;
+
     // создаем массив отдельных вершин
     VectorArray<T> *pVertexLists = new VectorArray<T>[G->vertexCount()];
 
@@ -72,19 +74,14 @@ public:
       // помещаем ребра в результат
       result.add(e);
     }
-
-    printEdges(result);
-    G->printEdges(nullptr, result);
-
-    return true;
+    return result;
   }
 
 private:
   //
   iGraph<T> *G;
   //
-  VectorArray<edge<T,int>> result;
-
+  
 private:
   // найти номер множества, в которое входит вершина
   T findInList(const VectorArray<T> *pVertexLists, T index) {
@@ -110,14 +107,5 @@ private:
       pVertexLists[firstIndex].add(pVertexLists[secondIndex].get(j));
     }
     pVertexLists[secondIndex].clear();
-  }
-
-  // печать вектора с ребрами
-  void printEdges(const VectorArray<edge<T, int>> &v) {
-    std::cout << "vector" << " (" << v.size() << ") :\n";
-    for (int i = 0; i < v.size(); ++i) {
-      std::cout << "[" << v.get(i).a << ";" << v.get(i).b << "]=" << v.get(i).weight << "\n";
-    }
-    std::cout << "\n";
   }
 };

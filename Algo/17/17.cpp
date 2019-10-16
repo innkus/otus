@@ -70,7 +70,9 @@ void test1()
   std::cout << msg << "\n";
   myGraph<int> myG(M, input);
   Kraskal<int> kl((iGraph<int>*)&myG);
-  kl.doSpanningTree();
+  VectorArray<edge<int, int>> result = kl.doSpanningTree();
+  global::printEdges(result);
+  myG.printEdges(nullptr, result);
 }
 
 
@@ -89,7 +91,9 @@ void test2()
   std::cout << msg << "\n";
   myGraph<int> myG(sqrt(sizeof(input) / sizeof(int)), input);
   Kraskal<int> kl((iGraph<int>*)&myG);
-  kl.doSpanningTree();
+  VectorArray<edge<int, int>> result = kl.doSpanningTree();
+  global::printEdges(result);
+  myG.printEdges(nullptr, result);
 }
 
 void test3()
@@ -127,7 +131,9 @@ void test3()
   std::cout << msg << "\n";
   myGraph<int> myG(M, input);
   Kraskal<int> kl((iGraph<int>*)&myG);
-  kl.doSpanningTree();
+  VectorArray<edge<int, int>> result = kl.doSpanningTree();
+  global::printEdges(result);
+  myG.printEdges(nullptr, result);
 }
 
 void test4()
@@ -166,7 +172,9 @@ void test4()
   std::cout << msg << "\n";
   myGraph<int> myG(M, input);
   Kraskal<int> kl((iGraph<int>*)&myG);
-  kl.doSpanningTree();
+  VectorArray<edge<int, int>> result = kl.doSpanningTree();
+  global::printEdges(result);
+  myG.printEdges(nullptr, result);
 }
 
 void test5()
@@ -200,7 +208,9 @@ void test5()
   std::cout << msg << "\n";
   myGraph<int> myG(M, input);
   Kraskal<int> kl((iGraph<int>*)&myG);
-  kl.doSpanningTree();
+  VectorArray<edge<int, int>> result = kl.doSpanningTree();
+  global::printEdges(result);
+  myG.printEdges(nullptr, result);
 }
 
 void test6()
@@ -235,7 +245,9 @@ void test6()
   std::cout << msg << "\n";
   myGraph<int> myG(M, input);
   Kraskal<int> kl((iGraph<int>*)&myG);
-  kl.doSpanningTree();
+  VectorArray<edge<int, int>> result = kl.doSpanningTree();
+  global::printEdges(result);
+  myG.printEdges(nullptr, result);
 }
 
 void test7()
@@ -254,7 +266,9 @@ void test7()
   std::cout << msg << "\n";
   myGraph<int> myG(sqrt(sizeof(input) / sizeof(int)), input);
   Kraskal<int> kl((iGraph<int>*)&myG);
-  kl.doSpanningTree();
+  VectorArray<edge<int, int>> result = kl.doSpanningTree();
+  global::printEdges(result);
+  myG.printEdges(nullptr, result);
 }
 
 void test8()
@@ -272,7 +286,9 @@ void test8()
   std::cout << msg << "\n";
   myGraph<int> myG(sqrt(sizeof(input) / sizeof(int)), input);
   Kraskal<int> kl((iGraph<int>*)&myG);
-  kl.doSpanningTree();
+  VectorArray<edge<int, int>> result = kl.doSpanningTree();
+  global::printEdges(result);
+  myG.printEdges(nullptr, result);
 }
 
 int main()
