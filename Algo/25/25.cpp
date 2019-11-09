@@ -38,7 +38,7 @@ void printHelp(int argc, char *argv[]) {
   if (argc >= 4)
     return;
 
-  cout << "Запуск: 25.exe key inputFile {outputFile}" << endl;
+  cout << "Запуск: 25.exe key inputFile outputFile" << endl;
   cout << "key        - ключ шифрования/расшифровки" << endl;
   cout << "inputFile  - путь к файлу с открытым текстом/шифротекстом" << endl;
   cout << "outputFile - путь к файлу с шифротекстом/открытым текстом" << endl;
