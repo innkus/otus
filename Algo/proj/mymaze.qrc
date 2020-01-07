@@ -1,0 +1,7 @@
+ <!DOCTYPE RCC><RCC version="1.0">
+ <qresource prefix="/">
+    <file>res/title.png</file>
+   <file>res/cross.png</file>
+   
+ </qresource>
+ </RCC>

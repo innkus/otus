@@ -129,7 +129,7 @@ void test3()
 
   const char *msg = "Test 3";
   std::cout << msg << "\n";
-  myGraph<int> myG(M, input);
+  myG     raph<int> myG(M, input);
   Kraskal<int> kl((iGraph<int>*)&myG);
   VectorArray<edge<int, int>> result = kl.doSpanningTree();
   global::printEdges(result);
